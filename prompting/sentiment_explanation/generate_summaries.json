@@ -1,0 +1,4 @@
+{
+    "model": "gpt-3.5-turbo-1106",
+    "instruction": "Summarize the following text in <25 words. Preserve the tense; if the paragraph is written in first-person perspective, your output should be the same."
+}

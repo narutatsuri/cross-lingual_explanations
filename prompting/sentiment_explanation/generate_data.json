@@ -1,0 +1,7 @@
+{
+    "model": "gpt-3.5-turbo-1106",
+    "instruction": "Generate a text and explanation pair that shows the sentiment of \"[FILL]\". Do not output a sentence on the topic of COVID-19. Your sentence should be on the topic of \"[TOPIC]\".",
+    "topics": [
+        "sports", "finance", "education", "environment", "food", "technology", "society", "family"
+    ]
+}
