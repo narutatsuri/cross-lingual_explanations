@@ -1,0 +1,268 @@
+[
+    {
+        "text": "[TEXT]: Despite clearly stating my severe nut allergy, the restaurant served me a dish with hidden nuts, putting my life at risk. \n",
+        "choice": "anger",
+        "explanation": " The text conveys a strong sense of anger and frustration, as the writer's safety and well-being were disregarded by the restaurant staff, resulting in a potentially life-threatening situation.",
+        "generated_raw": "[TEXT]: Despite clearly stating my severe nut allergy, the restaurant served me a dish with hidden nuts, putting my life at risk. \n[EXPLANATION]: The text conveys a strong sense of anger and frustration, as the writer's safety and well-being were disregarded by the restaurant staff, resulting in a potentially life-threatening situation.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: I ordered a rare steak, but it came out well-done - completely ruining my meal.\n\n",
+        "choice": "anger",
+        "explanation": " The text conveys a strong sense of frustration and disappointment, reflecting the sentiment of anger towards the mishandling of the food order.",
+        "generated_raw": "[TEXT]: I ordered a rare steak, but it came out well-done - completely ruining my meal.\n\n[EXPLANATION]: The text conveys a strong sense of frustration and disappointment, reflecting the sentiment of anger towards the mishandling of the food order.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: My colleague constantly ignores the basic protocol for data security, putting our entire team at risk. Despite repeated warnings, they continue to neglect these critical measures. It's infuriating to witness such reckless behavior in a technology-driven environment.\n\n",
+        "choice": "anger",
+        "explanation": " The text reveals a strong sentiment of anger towards the colleague's repeated negligence regarding data security in a technology-based setting. The frustration and concern for the team's well-being are evident, reflecting a deep sense of displeasure and irritation.",
+        "generated_raw": "[TEXT]: My colleague constantly ignores the basic protocol for data security, putting our entire team at risk. Despite repeated warnings, they continue to neglect these critical measures. It's infuriating to witness such reckless behavior in a technology-driven environment.\n\n[EXPLANATION]: The text reveals a strong sentiment of anger towards the colleague's repeated negligence regarding data security in a technology-based setting. The frustration and concern for the team's well-being are evident, reflecting a deep sense of displeasure and irritation.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: The education system's persistent underfunding and neglect of vital resources have failed our students, limiting their potential and perpetuating inequality.\n\n",
+        "choice": "anger",
+        "explanation": " This sentence conveys a strong sense of anger towards the education system's failure to adequately support students. The frustration is evident as the speaker highlights the detrimental impact of underfunding and neglect on students, resulting in limited potential and perpetuation of inequality.",
+        "generated_raw": "[TEXT]: The education system's persistent underfunding and neglect of vital resources have failed our students, limiting their potential and perpetuating inequality.\n\n[EXPLANATION]: This sentence conveys a strong sense of anger towards the education system's failure to adequately support students. The frustration is evident as the speaker highlights the detrimental impact of underfunding and neglect on students, resulting in limited potential and perpetuation of inequality.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: After years of underfunding and neglect, the state of public education in the city has reached a breaking point, sparking widespread anger and frustration among parents, teachers, and students.\n\n",
+        "choice": "anger",
+        "explanation": " The anger in the community is a result of long-standing neglect and underfunding of public education, which has led to a declining quality of education. Parents, teachers, and students are feeling the impact of these failures, leading to frustration and anger as they witness the detrimental effects on the future prospects of the children in the city.",
+        "generated_raw": "[TEXT]: After years of underfunding and neglect, the state of public education in the city has reached a breaking point, sparking widespread anger and frustration among parents, teachers, and students.\n\n[EXPLANATION]: The anger in the community is a result of long-standing neglect and underfunding of public education, which has led to a declining quality of education. Parents, teachers, and students are feeling the impact of these failures, leading to frustration and anger as they witness the detrimental effects on the future prospects of the children in the city.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: The diner angrily slammed down his fork, complaining about the overcooked steak and underseasoned vegetables, demanding to speak to the manager.\n\n",
+        "choice": "anger",
+        "explanation": " The diner's reaction, slamming down his fork and demanding to speak to the manager, expresses his frustration and anger at the poor quality of the food and service.",
+        "generated_raw": "[TEXT]: The diner angrily slammed down his fork, complaining about the overcooked steak and underseasoned vegetables, demanding to speak to the manager.\n\n[EXPLANATION]: The diner's reaction, slamming down his fork and demanding to speak to the manager, expresses his frustration and anger at the poor quality of the food and service.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: Despite numerous efforts to contribute positively to society, I continually encounter resistance and apathy from those around me. It's enraging to witness the blatant disregard for the betterment of our community and the lack of willingness to work together towards meaningful change. [url]\n",
+        "choice": "anger",
+        "explanation": " The text expresses a deep sentiment of anger towards the indifference and lack of cooperation within society, highlighting the frustration and exasperation caused by the perceived lack of commitment to collective progress.",
+        "generated_raw": "[TEXT]: Despite numerous efforts to contribute positively to society, I continually encounter resistance and apathy from those around me. It's enraging to witness the blatant disregard for the betterment of our community and the lack of willingness to work together towards meaningful change. [url]\n[EXPLANATION]: The text expresses a deep sentiment of anger towards the indifference and lack of cooperation within society, highlighting the frustration and exasperation caused by the perceived lack of commitment to collective progress.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: Despite the manufacturer's claim of a 12-hour battery life, my new laptop barely lasts 4 hours on a full charge, making it impossible to work without constant interruptions.\n",
+        "choice": "anger",
+        "explanation": " The frustration and irritation of experiencing a significant discrepancy between the advertised battery life and the actual performance of the laptop can evoke feelings of anger and dissatisfaction towards the technology company.",
+        "generated_raw": "[TEXT]: Despite the manufacturer's claim of a 12-hour battery life, my new laptop barely lasts 4 hours on a full charge, making it impossible to work without constant interruptions.\n[EXPLANATION]: The frustration and irritation of experiencing a significant discrepancy between the advertised battery life and the actual performance of the laptop can evoke feelings of anger and dissatisfaction towards the technology company.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: I can't believe companies still think it's okay to dump toxic waste into our rivers and lakes. It's enraging to see them destroy our environment without any consequences.\n\n",
+        "choice": "anger",
+        "explanation": " The tone of the text conveys a deep sense of anger and frustration regarding the irresponsible actions of companies dumping toxic waste into the environment. This sentiment reflects a strong emotional response to the detrimental impact on the natural world.",
+        "generated_raw": "[TEXT]: I can't believe companies still think it's okay to dump toxic waste into our rivers and lakes. It's enraging to see them destroy our environment without any consequences.\n\n[EXPLANATION]: The tone of the text conveys a deep sense of anger and frustration regarding the irresponsible actions of companies dumping toxic waste into the environment. This sentiment reflects a strong emotional response to the detrimental impact on the natural world.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: I ordered a steak medium rare, but it arrived well-done and dry. I specifically asked for it to be cooked perfectly, and now I'm just furious.\n",
+        "choice": "anger",
+        "explanation": " The speaker is expressing anger and frustration at the restaurant for not meeting their specific request, indicating a sense of disappointment and dissatisfaction.",
+        "generated_raw": "[TEXT]: I ordered a steak medium rare, but it arrived well-done and dry. I specifically asked for it to be cooked perfectly, and now I'm just furious.\n[EXPLANATION]: The speaker is expressing anger and frustration at the restaurant for not meeting their specific request, indicating a sense of disappointment and dissatisfaction.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: The government's continued neglect of environmental protection laws and the blatant disregard for the preservation of our natural resources is enraging. It's disheartening to witness the destruction of our environment for profit, and it fuels a deep-seated anger that demands action. [url]\n\n",
+        "choice": "anger",
+        "explanation": " The text expresses a sentiment of anger towards the government's lack of commitment to environmental protection. It conveys frustration and disappointment at the prioritization of profit over the preservation of nature, highlighting the urgency for change and action.",
+        "generated_raw": "[TEXT]: The government's continued neglect of environmental protection laws and the blatant disregard for the preservation of our natural resources is enraging. It's disheartening to witness the destruction of our environment for profit, and it fuels a deep-seated anger that demands action. [url]\n\n[EXPLANATION]: The text expresses a sentiment of anger towards the government's lack of commitment to environmental protection. It conveys frustration and disappointment at the prioritization of profit over the preservation of nature, highlighting the urgency for change and action.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: The referees' biased calls, favoring one team over the other, are completely unfair and ruining the integrity of the game. It's infuriating to watch the blatant injustice unfold on the field.\n",
+        "choice": "anger",
+        "explanation": " This text conveys a strong sentiment of anger towards the unfair and biased actions of the referees in sports. The use of words like \"completely unfair\" and \"infuriating\" expresses the speaker's strong emotions, showing clear frustration and indignation towards the perceived injustice in the game.",
+        "generated_raw": "[TEXT]: The referees' biased calls, favoring one team over the other, are completely unfair and ruining the integrity of the game. It's infuriating to watch the blatant injustice unfold on the field.\n[EXPLANATION]: This text conveys a strong sentiment of anger towards the unfair and biased actions of the referees in sports. The use of words like \"completely unfair\" and \"infuriating\" expresses the speaker's strong emotions, showing clear frustration and indignation towards the perceived injustice in the game.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: I can't believe my new smart TV keeps crashing in the middle of my favorite shows. I paid good money for this piece of junk, and it's nothing but constant frustration.\n\n",
+        "choice": "anger",
+        "explanation": " The strong language and dissatisfaction towards the malfunctioning smart TV show a clear sentiment of anger. The individual's annoyance and disappointment with the faulty technology are evident in the statement.",
+        "generated_raw": "[TEXT]: I can't believe my new smart TV keeps crashing in the middle of my favorite shows. I paid good money for this piece of junk, and it's nothing but constant frustration.\n\n[EXPLANATION]: The strong language and dissatisfaction towards the malfunctioning smart TV show a clear sentiment of anger. The individual's annoyance and disappointment with the faulty technology are evident in the statement.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: The pervasive inequality and injustice within our society is enraging. The blatant disregard for the marginalized and the perpetuation of discrimination across all levels is infuriating. It's exasperating to witness the systemic barriers that hinder progress and equality for all members of our society.\n\n",
+        "choice": "anger",
+        "explanation": " The use of words like \"enraging,\" \"infuriating,\" and \"exasperating\" conveys a strong sense of anger towards the inequality and injustice present within society. The frustration with the disregard for the marginalized and the perpetuation of discrimination reflects the sentiment of anger in the text.",
+        "generated_raw": "[TEXT]: The pervasive inequality and injustice within our society is enraging. The blatant disregard for the marginalized and the perpetuation of discrimination across all levels is infuriating. It's exasperating to witness the systemic barriers that hinder progress and equality for all members of our society.\n\n[EXPLANATION]: The use of words like \"enraging,\" \"infuriating,\" and \"exasperating\" conveys a strong sense of anger towards the inequality and injustice present within society. The frustration with the disregard for the marginalized and the perpetuation of discrimination reflects the sentiment of anger in the text.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: I ordered a meal from my favorite restaurant, but they got my order completely wrong. It's infuriating - I was really looking forward to that dish, and now I'm left with something I didn't even want.\n\n",
+        "choice": "anger",
+        "explanation": " The text conveys frustration and anger towards the restaurant for getting the order wrong, highlighting the disappointment and the strong negative emotion surrounding the situation.",
+        "generated_raw": "[TEXT]: I ordered a meal from my favorite restaurant, but they got my order completely wrong. It's infuriating - I was really looking forward to that dish, and now I'm left with something I didn't even want.\n\n[EXPLANATION]: The text conveys frustration and anger towards the restaurant for getting the order wrong, highlighting the disappointment and the strong negative emotion surrounding the situation.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: I ordered a vegetarian pizza, but when it arrived, it had pepperoni all over it. I specifically mentioned my dietary restrictions, and yet they messed up the order. It's so infuriating!\n\n",
+        "choice": "anger",
+        "explanation": " The disappointment and frustration of receiving an incorrect food order, especially when it goes against one's dietary restrictions, can evoke feelings of anger.",
+        "generated_raw": "[TEXT]: I ordered a vegetarian pizza, but when it arrived, it had pepperoni all over it. I specifically mentioned my dietary restrictions, and yet they messed up the order. It's so infuriating!\n\n[EXPLANATION]: The disappointment and frustration of receiving an incorrect food order, especially when it goes against one's dietary restrictions, can evoke feelings of anger.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: Whenever my favorite team loses a crucial game due to poor officiating, I feel a surge of anger and helplessness. It's infuriating to see the game's outcome being unfairly influenced by the referees' mistakes.\n\n",
+        "choice": "anger",
+        "explanation": " The text reflects a strong sentiment of anger as the speaker expresses frustration over the unjust impact of poor officiating on their favorite team's performance. The feeling of helplessness adds to the intensity of the anger, highlighting the speaker's deep emotional investment in the sport and the sense of injustice they feel.",
+        "generated_raw": "[TEXT]: Whenever my favorite team loses a crucial game due to poor officiating, I feel a surge of anger and helplessness. It's infuriating to see the game's outcome being unfairly influenced by the referees' mistakes.\n\n[EXPLANATION]: The text reflects a strong sentiment of anger as the speaker expresses frustration over the unjust impact of poor officiating on their favorite team's performance. The feeling of helplessness adds to the intensity of the anger, highlighting the speaker's deep emotional investment in the sport and the sense of injustice they feel.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: The government's lack of action on addressing climate change is infuriating. Despite overwhelming evidence and urgent warnings from scientists, little has been done to mitigate the destruction of our environment. It's maddening to see such negligence in the face of a looming crisis.\n\n",
+        "choice": "anger",
+        "explanation": " The text conveys a strong sense of anger towards the government's inaction in safeguarding the environment, highlighting the frustration and disappointment at the lack of decisive steps to address the pressing issue of climate change.",
+        "generated_raw": "[TEXT]: The government's lack of action on addressing climate change is infuriating. Despite overwhelming evidence and urgent warnings from scientists, little has been done to mitigate the destruction of our environment. It's maddening to see such negligence in the face of a looming crisis.\n\n[EXPLANATION]: The text conveys a strong sense of anger towards the government's inaction in safeguarding the environment, highlighting the frustration and disappointment at the lack of decisive steps to address the pressing issue of climate change.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: The school board's decision to cut funding for art and music programs while allocating more resources to sports teams is absolutely infuriating. It's disgraceful how they prioritize athletic achievements over the holistic development of students.\n\n",
+        "choice": "anger",
+        "explanation": " The text expresses anger and outrage towards the school board's decision to prioritize sports teams over art and music programs, indicating a sense of injustice and frustration with the educational system's allocation of resources.",
+        "generated_raw": "[TEXT]: The school board's decision to cut funding for art and music programs while allocating more resources to sports teams is absolutely infuriating. It's disgraceful how they prioritize athletic achievements over the holistic development of students.\n\n[EXPLANATION]: The text expresses anger and outrage towards the school board's decision to prioritize sports teams over art and music programs, indicating a sense of injustice and frustration with the educational system's allocation of resources.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: I can't believe how people continue to destroy the environment without understanding the consequences. It's maddening to see the disregard for our planet's future.\n\n",
+        "choice": "anger",
+        "explanation": " The strong emotion and sense of frustration towards people's disregard for the environment indicate a sentiment of anger.",
+        "generated_raw": "[TEXT]: I can't believe how people continue to destroy the environment without understanding the consequences. It's maddening to see the disregard for our planet's future.\n\n[EXPLANATION]: The strong emotion and sense of frustration towards people's disregard for the environment indicate a sentiment of anger.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: The government's continued neglect of crucial environmental issues and refusal to take decisive action is disgraceful. Our planet is suffering, and they are doing nothing about it. It's infuriating.\n\n",
+        "choice": "anger",
+        "explanation": " The intense dissatisfaction and indignation towards the government's inaction on environmental issues clearly conveys a sentiment of anger. The use of strong language emphasizes the depth of frustration and disappointment towards the situation.",
+        "generated_raw": "[TEXT]: The government's continued neglect of crucial environmental issues and refusal to take decisive action is disgraceful. Our planet is suffering, and they are doing nothing about it. It's infuriating.\n\n[EXPLANATION]: The intense dissatisfaction and indignation towards the government's inaction on environmental issues clearly conveys a sentiment of anger. The use of strong language emphasizes the depth of frustration and disappointment towards the situation.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: The school administration's constant neglect of student needs and their refusal to address the bullying issue has left many parents and students feeling enraged and ignored.\n\n",
+        "choice": "anger",
+        "explanation": " The text expresses anger through the frustration of the school administration's failure to address critical issues like bullying, which can deeply impact the well-being of students. This level of frustration and disregard can evoke feelings of anger and helplessness among the affected individuals.",
+        "generated_raw": "[TEXT]: The school administration's constant neglect of student needs and their refusal to address the bullying issue has left many parents and students feeling enraged and ignored.\n\n[EXPLANATION]: The text expresses anger through the frustration of the school administration's failure to address critical issues like bullying, which can deeply impact the well-being of students. This level of frustration and disregard can evoke feelings of anger and helplessness among the affected individuals.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: I'm fed up with the referee's biased calls and the unfair treatment against our team. It's infuriating to see the game being influenced by partiality and incompetence.\n\n",
+        "choice": "anger",
+        "explanation": " The text conveys a strong sense of frustration and anger towards the unfair treatment in sports, specifically the biased calls of the referee. The use of words like \"fed up\" and \"infuriating\" underscores the heightened emotional state, signifying anger.",
+        "generated_raw": "[TEXT]: I'm fed up with the referee's biased calls and the unfair treatment against our team. It's infuriating to see the game being influenced by partiality and incompetence.\n\n[EXPLANATION]: The text conveys a strong sense of frustration and anger towards the unfair treatment in sports, specifically the biased calls of the referee. The use of words like \"fed up\" and \"infuriating\" underscores the heightened emotional state, signifying anger.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: My sister promised to take care of our aging parents while I was away for a business trip, but when I came back, I found out she had neglected them and left them alone for days. It's enraging to see her disregard for our family's well-being.\n\n",
+        "choice": "anger",
+        "explanation": " The betrayal of trust and the neglect of the aging parents clearly indicate a strong sentiment of anger towards the sister's irresponsible behavior and lack of concern for the family's welfare.",
+        "generated_raw": "[TEXT]: My sister promised to take care of our aging parents while I was away for a business trip, but when I came back, I found out she had neglected them and left them alone for days. It's enraging to see her disregard for our family's well-being.\n\n[EXPLANATION]: The betrayal of trust and the neglect of the aging parents clearly indicate a strong sentiment of anger towards the sister's irresponsible behavior and lack of concern for the family's welfare.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: My favorite soccer team lost the championship due to a series of unfair referee decisions, blatant fouls from the opposing team, and biased media coverage. It's infuriating to see all the hard work of the players being undermined by such injustice.\n",
+        "choice": "anger",
+        "explanation": " The intense feeling of frustration and outrage towards the unfair events in the sports game reflects a strong sentiment of anger. The use of words like \"unfair\", \"blatant\", and \"biased\" demonstrates the deep dissatisfaction with the circumstances.",
+        "generated_raw": "[TEXT]: My favorite soccer team lost the championship due to a series of unfair referee decisions, blatant fouls from the opposing team, and biased media coverage. It's infuriating to see all the hard work of the players being undermined by such injustice.\n[EXPLANATION]: The intense feeling of frustration and outrage towards the unfair events in the sports game reflects a strong sentiment of anger. The use of words like \"unfair\", \"blatant\", and \"biased\" demonstrates the deep dissatisfaction with the circumstances.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: After carefully investing in the stock market for years, I just received news that my entire portfolio has plummeted due to a sudden market crash. All my hard-earned savings are now gone, leaving me deeply enraged at the unpredictable nature of finance.\n",
+        "choice": "anger",
+        "explanation": " The text reflects a profound sense of anger and distress as the speaker experiences the loss of their financial security. The sudden and unexpected nature of the market crash has led to a strong feeling of frustration and helplessness.",
+        "generated_raw": "[TEXT]: After carefully investing in the stock market for years, I just received news that my entire portfolio has plummeted due to a sudden market crash. All my hard-earned savings are now gone, leaving me deeply enraged at the unpredictable nature of finance.\n[EXPLANATION]: The text reflects a profound sense of anger and distress as the speaker experiences the loss of their financial security. The sudden and unexpected nature of the market crash has led to a strong feeling of frustration and helplessness.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: My colleague constantly disregards the importance of data security protocols, putting our company at risk of cyber attacks. It's infuriating to see such negligence towards something so crucial in today's technology-driven world.\n\n",
+        "choice": "anger",
+        "explanation": " The intense frustration and outrage towards the colleague's behavior reveal a strong sentiment of anger, particularly in the context of the potential ramifications for the company's security and operations.",
+        "generated_raw": "[TEXT]: My colleague constantly disregards the importance of data security protocols, putting our company at risk of cyber attacks. It's infuriating to see such negligence towards something so crucial in today's technology-driven world.\n\n[EXPLANATION]: The intense frustration and outrage towards the colleague's behavior reveal a strong sentiment of anger, particularly in the context of the potential ramifications for the company's security and operations.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: The customer angrily berated the restaurant staff for serving undercooked steak, demanding a refund and vowing never to return.\n\n",
+        "choice": "anger",
+        "explanation": " The customer's irate behavior, including berating the staff and vowing never to return, illustrates a clear sentiment of anger towards the unsatisfactory quality of the food and the service provided.",
+        "generated_raw": "[TEXT]: The customer angrily berated the restaurant staff for serving undercooked steak, demanding a refund and vowing never to return.\n\n[EXPLANATION]: The customer's irate behavior, including berating the staff and vowing never to return, illustrates a clear sentiment of anger towards the unsatisfactory quality of the food and the service provided.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: After working tirelessly and making sacrifices for years, I discovered that my financial advisor had been mishandling my investments, resulting in significant losses. It's maddening to think that someone I trusted with my financial future was so incompetent and reckless.\n\n",
+        "choice": "anger",
+        "explanation": " The text conveys a strong sense of anger, as the narrator feels betrayed and infuriated by the financial advisor's irresponsible actions, which have jeopardized their hard-earned savings and financial security.",
+        "generated_raw": "[TEXT]: After working tirelessly and making sacrifices for years, I discovered that my financial advisor had been mishandling my investments, resulting in significant losses. It's maddening to think that someone I trusted with my financial future was so incompetent and reckless.\n\n[EXPLANATION]: The text conveys a strong sense of anger, as the narrator feels betrayed and infuriated by the financial advisor's irresponsible actions, which have jeopardized their hard-earned savings and financial security.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: The lack of support and resources for students with learning disabilities in our education system is enraging. It's unfair that these students are left to struggle without the proper assistance and accommodations they deserve.\n\n",
+        "choice": "anger",
+        "explanation": " The text reflects a deep-seated frustration and anger towards the inequity and neglect within the education system towards students with learning disabilities. This conveys a sentiment of anger and injustice.",
+        "generated_raw": "[TEXT]: The lack of support and resources for students with learning disabilities in our education system is enraging. It's unfair that these students are left to struggle without the proper assistance and accommodations they deserve.\n\n[EXPLANATION]: The text reflects a deep-seated frustration and anger towards the inequity and neglect within the education system towards students with learning disabilities. This conveys a sentiment of anger and injustice.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: I'm appalled by the lack of empathy in society. It's infuriating to see people ignore the struggles of others and prioritize their own interests without regard for anyone else.\n\n",
+        "choice": "anger",
+        "explanation": " The text conveys a sense of deep disappointment and anger toward the lack of empathy and selfish behavior in society. The use of words like \"appalled\" and \"infuriating\" reflect intense emotional frustration and anger towards the prevalent attitude of indifference.",
+        "generated_raw": "[TEXT]: I'm appalled by the lack of empathy in society. It's infuriating to see people ignore the struggles of others and prioritize their own interests without regard for anyone else.\n\n[EXPLANATION]: The text conveys a sense of deep disappointment and anger toward the lack of empathy and selfish behavior in society. The use of words like \"appalled\" and \"infuriating\" reflect intense emotional frustration and anger towards the prevalent attitude of indifference.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: After years of supporting her siblings financially, sacrificing her own needs, she discovered they had been squandering the money on frivolous luxuries, leaving her feeling betrayed and taken advantage of by her own family.\n\n",
+        "choice": "anger",
+        "explanation": " This situation can evoke anger as it represents a breach of trust and lack of gratitude for the sacrifices made. The discovery that her siblings had been irresponsibly using the money she provided can lead to a deep sense of betrayal and resentment, creating a strong feeling of anger towards her family.",
+        "generated_raw": "[TEXT]: After years of supporting her siblings financially, sacrificing her own needs, she discovered they had been squandering the money on frivolous luxuries, leaving her feeling betrayed and taken advantage of by her own family.\n\n[EXPLANATION]: This situation can evoke anger as it represents a breach of trust and lack of gratitude for the sacrifices made. The discovery that her siblings had been irresponsibly using the money she provided can lead to a deep sense of betrayal and resentment, creating a strong feeling of anger towards her family.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: I ordered a medium-rare steak at a fancy restaurant, but it came well-done and dry. The chef completely ignored my request and ruined my dining experience.\n\n",
+        "choice": "anger",
+        "explanation": " The text conveys a sense of anger directed towards the restaurant's chef for disregarding the customer's specific order, resulting in disappointment and frustration with the dining experience.",
+        "generated_raw": "[TEXT]: I ordered a medium-rare steak at a fancy restaurant, but it came well-done and dry. The chef completely ignored my request and ruined my dining experience.\n\n[EXPLANATION]: The text conveys a sense of anger directed towards the restaurant's chef for disregarding the customer's specific order, resulting in disappointment and frustration with the dining experience.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: Despite putting in countless hours of training and preparation, the referees made a series of biased calls that ultimately cost the team the championship, sparking outrage among the players and fans alike.\n\n",
+        "choice": "anger",
+        "explanation": " This text conveys a sentiment of anger as it highlights the unfair and biased actions of the referees, which led to the team's loss in the championship. The mention of the players and fans being outraged emphasizes the intense emotional response to the perceived injustice, reflecting a deep sense of frustration and anger.",
+        "generated_raw": "[TEXT]: Despite putting in countless hours of training and preparation, the referees made a series of biased calls that ultimately cost the team the championship, sparking outrage among the players and fans alike.\n\n[EXPLANATION]: This text conveys a sentiment of anger as it highlights the unfair and biased actions of the referees, which led to the team's loss in the championship. The mention of the players and fans being outraged emphasizes the intense emotional response to the perceived injustice, reflecting a deep sense of frustration and anger.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: Despite numerous warnings and scientific evidence, the government continues to turn a blind eye to environmental issues, putting our planet's future at risk. It is infuriating to see such blatant negligence.\n\n",
+        "choice": "anger",
+        "explanation": " The text expresses a deep sense of anger and frustration towards the government's failure to address environmental issues, highlighting the impact of this negligence on the planet's future.",
+        "generated_raw": "[TEXT]: Despite numerous warnings and scientific evidence, the government continues to turn a blind eye to environmental issues, putting our planet's future at risk. It is infuriating to see such blatant negligence.\n\n[EXPLANATION]: The text expresses a deep sense of anger and frustration towards the government's failure to address environmental issues, highlighting the impact of this negligence on the planet's future.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: The education system's failure to provide adequate support for students with learning disabilities has resulted in many talented individuals being left behind and denied the opportunity to reach their full potential.\n\n",
+        "choice": "anger",
+        "explanation": " This statement conveys anger towards the education system's neglect of students with learning disabilities. The frustration is palpable as the speaker denounces the system's failure to support and nurture the talents of these individuals, which perpetuates inequality and denies them the chance to succeed.",
+        "generated_raw": "[TEXT]: The education system's failure to provide adequate support for students with learning disabilities has resulted in many talented individuals being left behind and denied the opportunity to reach their full potential.\n\n[EXPLANATION]: This statement conveys anger towards the education system's neglect of students with learning disabilities. The frustration is palpable as the speaker denounces the system's failure to support and nurture the talents of these individuals, which perpetuates inequality and denies them the chance to succeed.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: Despite my constant pleas for understanding, my family continues to dismiss my feelings and belittle my aspirations, leaving me seething with resentment.\n\n",
+        "choice": "anger",
+        "explanation": " The text suggests a strong sentiment of anger and frustration towards the lack of empathy and support from the family. The use of words like \"dismiss,\" \"belittle,\" and \"resentment\" conveys the speaker's deep-seated resentment and frustration with their family's behavior. This indicates a strong sense of anger and disappointment within the familial relationships.",
+        "generated_raw": "[TEXT]: Despite my constant pleas for understanding, my family continues to dismiss my feelings and belittle my aspirations, leaving me seething with resentment.\n\n[EXPLANATION]: The text suggests a strong sentiment of anger and frustration towards the lack of empathy and support from the family. The use of words like \"dismiss,\" \"belittle,\" and \"resentment\" conveys the speaker's deep-seated resentment and frustration with their family's behavior. This indicates a strong sense of anger and disappointment within the familial relationships.",
+        "id": "generated"
+    },
+    {
+        "text": "[TEXT]: After years of hard work and dedication to the sport, the referee's biased decision cost our team the championship title, leaving us feeling cheated and outraged.\n\n",
+        "choice": "anger",
+        "explanation": " The strong emotional response to the unfair referee decision reflects the anger and frustration felt by the team after investing so much effort in their sport. The sense of injustice and feeling of being robbed of a well-deserved victory intensifies the sentiment of anger in this scenario.",
+        "generated_raw": "[TEXT]: After years of hard work and dedication to the sport, the referee's biased decision cost our team the championship title, leaving us feeling cheated and outraged.\n\n[EXPLANATION]: The strong emotional response to the unfair referee decision reflects the anger and frustration felt by the team after investing so much effort in their sport. The sense of injustice and feeling of being robbed of a well-deserved victory intensifies the sentiment of anger in this scenario.",
+        "id": "generated"
+    }
+]

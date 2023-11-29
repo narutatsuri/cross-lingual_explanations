@@ -46,14 +46,19 @@ class PromptHandler:
 
         return choice, explanation, response
     
-    def generate_data(self, emotion, emotion_example):
+    def generate_data(self, emotion, emotion_examples):
         topic = random.sample(self.prompt_template["topics"], 1)[0]
 
         prompt = ""
         prompt += self.prompt_template["instruction"].replace("[FILL]", emotion).replace("[TOPIC]", topic) + "\n"
-        prompt += "[EXAMPLE]:\n"
-        prompt += "[TEXT]: " + emotion_example["text"] + "\n"
-        prompt += "[EXPLANATION]: " + emotion_example["explanation"] + "\n"
+        for index, example in enumerate(emotion_examples):
+            prompt += f"[EXAMPLE {index}, with sentiment {example['choice']}]:\n"
+            prompt += "[TEXT]: " + example["text"] + "\n"
+            prompt += "[EXPLANATION]: " + example["explanation"] + "\n"
+            prompt += "\n"
+
+        print(prompt)
+        exit()
 
         response = openai.ChatCompletion.create(model=self.model,messages=[{"role": "system", "content": ""},
                                                                             {"role": "user", "content": prompt},],

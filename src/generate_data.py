@@ -10,7 +10,7 @@ import multiprocessing
 parser = argparse.ArgumentParser()
 parser.add_argument("--data_dir", type=str)
 parser.add_argument("--num_processes", type=int, default=10)
-parser.add_argument("--num_samples_per_emotion", type=int, default=100)
+parser.add_argument("--num_samples_per_emotion", type=int, default=500)
 
 parser.add_argument("--prompt_template", type=str)
 parser.add_argument("--api_keys_file", type=str, default="prompting/openai_keys.json")
@@ -43,6 +43,10 @@ for example in formatted_data:
 for emotion in plutchik:
     emotion_counts[emotion] = max(args["num_samples_per_emotion"] - emotion_counts[emotion], 0)
 
+# all_examples = [example for example in example_by_emotion.values()]
+
+all_examples = list(itertools.chain.from_iterable(example_by_emotion.values()))
+
 for emotion in emotion_counts:
     if emotion_counts[emotion] == 0:
         continue
@@ -56,7 +60,8 @@ for emotion in emotion_counts:
     for process_id in range(args["num_processes"]):
         worker_results.append(pool.apply_async(generate_data_worker_task_func, args = (prompter, 
                                                                                        emotion,
-                                                                                       example_by_emotion[emotion],
+                                                                                    #    example_by_emotion[emotion],
+                                                                                       all_examples,
                                                                                        count,
                                                                                        process_id, 
                                                                                        args["data_dir"], 

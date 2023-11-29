@@ -47,7 +47,7 @@ def explain_worker_task_func(prompter, extracted_files, process_id, explanation_
     
     return output_data
 
-def generate_data_worker_task_func(prompter, emotion, example_by_emotion, count, process_id, summary_dir, lock):
+def generate_data_worker_task_func(prompter, emotion, example_by_emotion, count, process_id, summary_dir, lock, num_examples=3):
     with lock:
         bar = tqdm(desc=f"Process {process_id+1}", total=count, position=process_id+1, leave=False)
     output_data = []
@@ -57,7 +57,7 @@ def generate_data_worker_task_func(prompter, emotion, example_by_emotion, count,
             bar.update(1)
 
         new_example = {}
-        emotion_example = random.sample(example_by_emotion, 1)[0]
+        emotion_example = random.sample(example_by_emotion, num_examples)
 
         text, explanation, response = prompter.generate_data(emotion, emotion_example)
         new_example["text"] = text
