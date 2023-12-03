@@ -2,6 +2,7 @@ from tqdm import tqdm
 import json
 from utils import *
 import random
+import itertools
 
 
 def summarize_worker_task_func(prompter, extracted_files, process_id, summary_dir, lock):
@@ -47,7 +48,7 @@ def explain_worker_task_func(prompter, extracted_files, process_id, explanation_
     
     return output_data
 
-def generate_data_worker_task_func(prompter, emotion, example_by_emotion, count, process_id, summary_dir, lock, num_examples=3):
+def generate_data_worker_task_func(prompter, emotion, example_by_emotion, count, process_id, summary_dir, lock, num_examples, ic_example_retrieval):
     with lock:
         bar = tqdm(desc=f"Process {process_id+1}", total=count, position=process_id+1, leave=False)
     output_data = []
@@ -57,7 +58,15 @@ def generate_data_worker_task_func(prompter, emotion, example_by_emotion, count,
             bar.update(1)
 
         new_example = {}
-        emotion_example = random.sample(example_by_emotion, num_examples)
+
+        if ic_example_retrieval == None:
+            all_examples = list(itertools.chain.from_iterable(example_by_emotion.values()))
+            emotion_example = random.sample(all_examples, num_examples)
+        elif ic_example_retrieval == "diverse":
+            ic_example_emotions = random.sample(list(example_by_emotion.keys()), num_examples)
+            emotion_example = []
+            for ic_example_emotion in ic_example_emotions:
+                emotion_example.append(random.sample(example_by_emotion[ic_example_emotion], 1)[0])
 
         text, explanation, response = prompter.generate_data(emotion, emotion_example)
         new_example["text"] = text
@@ -67,7 +76,10 @@ def generate_data_worker_task_func(prompter, emotion, example_by_emotion, count,
         new_example["id"] = "generated"
 
         output_data.append(new_example)
-        json.dump(output_data, fp=open(summary_dir.replace(".json", f"_process_id={process_id}_emotion={emotion}.json"), "w"), indent=4, default=set_default)
+        json.dump(output_data, 
+                  fp=open(summary_dir.replace(".json", f"_process_id={process_id}_emotion={emotion}.json"), "w"), 
+                  indent=4, 
+                  default=set_default)
 
     with lock:
         bar.close()

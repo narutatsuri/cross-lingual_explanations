@@ -10,11 +10,11 @@ class BackboneModel:
         self.max_input_length = 256
         self.max_output_length = 256
         self.batch_size = 4
-        self.weight_decay = 0.1
-        self.learning_rate = 4e-5
-        self.epochs = 3
+        self.epochs = 10
         self.num_beams = 8
         self.device = device
+
+        self.model_name = model_checkpoint
 
         self.tokenizer = AutoTokenizer.from_pretrained(model_tokenizer)
         self.model = AutoModelForSeq2SeqLM.from_pretrained(model_checkpoint, device_map = 'auto')
@@ -33,11 +33,13 @@ class BackboneModel:
     def train(self, train_data, test_data , output_dir):
         dataset = load_dataset("csv", data_files={'train': train_data, 'test': test_data})
         tokenized_datasets = dataset.map(self.tokenizer_fn, batched=True)
-        training_args = TrainingArguments(output_dir=output_dir, evaluation_strategy="epoch", 
-                                          per_device_train_batch_size=4,
-                                          per_device_eval_batch_size=8,
-                                          report_to=None,
-                                          num_train_epochs=10)
+        training_args = TrainingArguments(output_dir=output_dir, 
+                                          evaluation_strategy="epoch", 
+                                          per_device_train_batch_size=self.batch_size,
+                                          per_device_eval_batch_size=self.batch_size * 2,
+                                          report_to="none",
+                                          save_strategy="no",
+                                          num_train_epochs=self.epochs)
 
         trainer = Trainer(model=self.model,
                           args=training_args,
@@ -45,23 +47,25 @@ class BackboneModel:
                           eval_dataset=tokenized_datasets['test'])
 
         trainer.train()
+
+        self.model.save_pretrained(f"models/{self.model_name}-train_epochs={self.epochs}")
         
     def infer(self, sentence):
         """
         """
-        input = self.tokenizer.encode(sentence, return_tensors="pt").to(self.device)
-        print("# Encoded sentence")
-        output = self.model.generate(input, max_new_tokens=128)
-
-        return output
-        
         inputs = self.tokenizer([sentence], max_length=self.max_input_length, truncation=True, return_tensors="pt").to(self.device)    
-        # output = self.model.generate(**inputs, num_beams=self.num_beams, do_sample=True, max_length=self.max_output_length)
-        output = self.model.generate(**inputs)
-        print(output)
+        output = self.model.generate(**inputs, num_beams=self.num_beams, do_sample=True, max_length=self.max_output_length)
+        # output = self.model.generate(**inputs)
+        # print(output)
         decoded_output = self.tokenizer.batch_decode(output, skip_special_tokens=True)[0]
 
         return decoded_output
+    
+        # input = self.tokenizer.encode(sentence, return_tensors="pt").to(self.device)
+        # output = self.model.generate(input, max_new_tokens=128)
+
+        # return output
+        
 
 # from transformers import BloomTokenizerFast, BloomForCausalLM, TrainingArguments, Trainer
 # from datasets import load_dataset

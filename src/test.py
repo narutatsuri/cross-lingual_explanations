@@ -4,8 +4,10 @@ import os
 os.environ["TRANSFORMERS_CACHE"] = "/local-scratch1/data/wl2787/huggingface_cache/"
 # os.environ["TRANSFORMERS_CACHE"] = "/mnt/swordfish-datastore/wl2787/huggingface_cache/"
 os.environ["CUDA_VISIBLE_DEVICES"]="0"
+import torch
 from utils import *
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
+from utils.backbones import BackboneModel
 
 
 parser = argparse.ArgumentParser()
@@ -17,8 +19,10 @@ args = vars(parser.parse_args())
 data = json.load(open(args["data_dir"], "r"))
 print("# LOADED DATA")
 
-tokenizer = AutoTokenizer.from_pretrained(args["model_tokenizer"])
-model = AutoModelForSeq2SeqLM.from_pretrained(args["model_checkpoint"], torch_dtype="auto", device_map="auto")
+# tokenizer = AutoTokenizer.from_pretrained(args["model_tokenizer"])
+# model = AutoModelForSeq2SeqLM.from_pretrained(args["model_checkpoint"], torch_dtype="auto", device_map="auto")
+device = torch.device("cuda")
+model = BackboneModel(args["model_tokenizer"], args["model_checkpoint"], device)
 
 print("# LOADED MODEL")
 
@@ -28,7 +32,8 @@ for example in data:
     input_format = "[TEXT]: {} [SENTIMENT]: {}".format(text, emotion)
     print("INPUT: ", input_format)
 
-    output = model.generate(tokenizer.encode(input_format, return_tensors="pt").to(model.device), max_new_tokens=512)
-    output = tokenizer.batch_decode(output, skip_special_tokens=True)[0]
+    output = model.infer(input_format)
+    # output = model.generate(tokenizer.encode(input_format, return_tensors="pt", max_length=512, padding='max_length', truncation=True).to(model.device))
+    # output = tokenizer.batch_decode(output, skip_special_tokens=True)[0]
     print("OUTPUT: ", output)
     input()
