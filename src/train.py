@@ -1,88 +1,61 @@
+import argparse
 import os
-os.environ["TRANSFORMERS_CACHE"] = "/local-scratch1/data/wl2787/huggingface_cache/"
-# os.environ["TRANSFORMERS_CACHE"] = "/mnt/swordfish-datastore/wl2787/huggingface_cache/"
-os.environ["CUDA_VISIBLE_DEVICES"]="7"
-import torch
-from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, Trainer, TrainingArguments
-from torch.utils.data import Dataset
-import pandas as pd
+# os.environ["TRANSFORMERS_CACHE"] = "/local-scratch1/data/wl2787/huggingface_cache/" # communication
+# os.environ["TRANSFORMERS_CACHE"] = "/mnt/swordfish-datastore/wl2787/huggingface_cache/" # branzino
+os.environ["TRANSFORMERS_CACHE"] = "/local/data/wl2787/huggingface_cache/" # coffee
+os.environ["CUDA_VISIBLE_DEVICES"] = "4,6,7"
+import yaml
+from munch import Munch
 from utils.backbones import BackboneModel
 
 
-# class Seq2SeqDataset(Dataset):
-#     def __init__(self, input_texts, target_texts, tokenizer, max_length):
-#         self.tokenizer = tokenizer
-#         self.input_texts = input_texts
-#         self.target_texts = target_texts
-#         self.max_length = max_length
+parser = argparse.ArgumentParser()
+parser.add_argument("--config_file", type=str, default="conf/backbone.yaml")
 
-#     def __len__(self):
-#         return len(self.input_texts)
+parser.add_argument("--shots", type=str)
+parser.add_argument("--source", type=str, default="ja")
+parser.add_argument("--target", type=str, default="en")
+parser.add_argument("--save_strategy", type=str, default="no")
+parser.add_argument("--epochs", type=int, default=3)
+cmd_args = vars(parser.parse_args())
 
-#     def __getitem__(self, idx):
-#         input_text = self.input_texts[idx]
-#         target_text = self.target_texts[idx]
 
-#         input_encoding = self.tokenizer(
-#             input_text,
-#             max_length=self.max_length,
-#             padding='max_length',
-#             truncation=True,
-#             return_tensors='pt'
-#         )
+# Load YAML config file
+args = Munch.fromYAML(open(cmd_args["config_file"], "r"))
+model_name = f"{args.model.checkpoint.split('/')[-1]}-language={args.model.language}-epochs={args.training.epochs}-batch_size={args.training.train_batch_size}"
 
-#         target_encoding = self.tokenizer(
-#             target_text,
-#             max_length=self.max_length,
-#             padding='max_length',
-#             truncation=True,
-#             return_tensors='pt'
-#         )
+if args.model.arguments != None:
+    model_name += f"-arguments={args.model.arguments}"
 
-#         return {
-#             'input_ids': input_encoding['input_ids'].flatten(),
-#             'attention_mask': input_encoding['attention_mask'].flatten(),
-#             'labels': target_encoding['input_ids'].flatten()
-#         }
+# Create model directory
+out_dir = os.path.join(args.training.save_checkpoint_dir, model_name)
+args.model_name = model_name
+args.out_dir = out_dir
+args.model.tokenizer = args.model.checkpoint
 
-checkpoint = "google/mt5-large"
-# tokenizer = AutoTokenizer.from_pretrained(checkpoint)
-# model = AutoModelForSeq2SeqLM.from_pretrained(checkpoint, torch_dtype="auto", device_map="auto")
+print(yaml.dump(args, allow_unicode=True, default_flow_style=False))
 
-train_data_dir = "data/english/train_cleaned.csv"
-test_data_dir = "data/english/test_cleaned.csv"
+train_data_dir = args.training.train_data_dir
+val_data_dir = args.training.val_data_dir
 
-model = BackboneModel(checkpoint, checkpoint)
-model.train(train_data_dir, test_data_dir, "results/")
-# train = pd.read_csv(train_data_dir)
-# valid = pd.read_csv(test_data_dir)
+model = BackboneModel(args)
+model.train(train_data_dir, val_data_dir)
 
-# train_input_texts = list(train["input"])
-# train_target_texts = list(train["output"])
-# valid_input_texts = list(valid["input"])
-# valid_target_texts = list(valid["output"])
 
-# # Initialize datasets
-# train_dataset = Seq2SeqDataset(train_input_texts, train_target_texts, tokenizer, max_length=512)
-# valid_dataset = Seq2SeqDataset(valid_input_texts, valid_target_texts, tokenizer, max_length=512)
+if cmd_args["shots"] != None:
+    assert args.model.language == cmd_args["source"]
 
-# # Define training arguments
-# training_args = TrainingArguments(
-#     report_to="none",
-#     output_dir="results",
-#     num_train_epochs=20,
-#     per_device_train_batch_size=2,
-#     per_device_eval_batch_size=4,
-#     logging_dir='results/logs',
-#     logging_steps=10,
-#     save_strategy="no"
-# )
+    model_name = f"{args.model.checkpoint.split('/')[-1]}-shots={cmd_args['shots']}"
 
-# trainer = Trainer(
-#     model=model,
-#     args=training_args,
-#     train_dataset=train_dataset,
-#     eval_dataset=valid_dataset)
+    # Create model directory
+    out_dir = os.path.join(args.training.save_checkpoint_dir, model_name)
+    args.model_name = model_name
+    args.out_dir = out_dir
+    args.training.save_strategy = cmd_args["save_strategy"]
+    args.training.epochs = cmd_args["epochs"]
 
-# trainer.train()
-# model.save_pretrained(f"models/{checkpoint.split('/')[-1]}-train_epochs=5")
+    train_data_dir = f"data/training_lang={cmd_args['target']}-data=split_{cmd_args['target']}-shots={cmd_args['shots']}.csv"
+    val_data_dir = f"data/val_lang={cmd_args['target']}-data=split_{cmd_args['target']}.csv"
+
+    model.update_parameters(args)
+    model.train(train_data_dir, val_data_dir)

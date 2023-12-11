@@ -64,3 +64,23 @@ class PromptHandler:
         text, explanation = response.split("[EXPLANATION]:")
 
         return text, explanation, response
+    
+    def translate_generated_data(self, text):
+        prompt = ""
+        prompt += self.prompt_template["instruction"] + "\n" + text
+
+        response = openai.ChatCompletion.create(model=self.model,messages=[{"role": "system", "content": ""},
+                                                                            {"role": "user", "content": prompt},],
+                                                                            temperature=1).choices[0].message.content
+
+        return response
+    
+    def label_emotion(self, text):
+        prompt = ""
+        prompt += self.prompt_template["instruction"].replace("INSERT_TEXT", text)
+
+        response = openai.ChatCompletion.create(model=self.model,messages=[{"role": "system", "content": ""},
+                                                                            {"role": "user", "content": prompt},],
+                                                                            temperature=1).choices[0].message.content
+
+        return response

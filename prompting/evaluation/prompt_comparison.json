@@ -1,0 +1,4 @@
+{
+    "model": "gpt-3.5-turbo-1106",
+    "instruction": "You are provided with a text and an associated emotion, along with two rationales for the emotion. Does [RATIONALE 1] explain the emotion as well as [RATIONALE 2]? Your response should only be either YES or NO."
+}

@@ -1,0 +1,4 @@
+{
+    "model": "gpt-3.5-turbo-1106",
+    "instruction": "You are provided with a text and an associated emotion, along with two rationales for the emotion. On a scale of 1 to 5, score [RATIONALE 1] on its fluency in terms of grammatical correctness and natural phrase usage. Consider [RATIONALE 2] as a reference with a fluency score of 5."
+}

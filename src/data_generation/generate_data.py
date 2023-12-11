@@ -1,8 +1,9 @@
-import argparse, random, json, os
+import argparse, random, json
+import sys
+sys.path.append('../')
 from utils import *
 from utils.models import PromptHandler
 from utils.multiprocessing import *
-import itertools
 import multiprocessing
 
 
@@ -26,21 +27,16 @@ random.seed(cmd_args["random_seed"])
 keys = json.load(open(cmd_args["api_keys_file"], "r"))
 assert all([key.startswith("sk-") for key in keys]), "[ERROR]: Set up keys in `openai_keys.json`."
 
+# Create prompter
 prompt_template = json.load(open(cmd_args["prompt_template"], "r"))
 prompter = PromptHandler(api_key=keys, prompt_template=prompt_template)
+
+# Load data
 formatted_data = json.load( open(cmd_args["data_dir"], "r") )
 
 # Get counts for number of instances that need generating for each emotion
-emotion_counts = {}
-example_by_emotion = {}
-for emotion in plutchik:
-    emotion_counts[emotion] = 0
-    example_by_emotion[emotion] = []
-for example in formatted_data:
-    emotion_counts[example["choice"]] += 1
-    example_by_emotion[example["choice"]].append(example)
-for emotion in plutchik:
-    emotion_counts[emotion] = max(cmd_args["num_samples_per_emotion"] - emotion_counts[emotion], 0)
+emotion_counts = get_emotion_counts(formatted_data)
+example_by_emotion = get_emotion_splits(formatted_data)
 
 for emotion in emotion_counts:
     # If quota for emotion is reached, skip

@@ -1,4 +1,6 @@
 import argparse, random, json, os
+import sys
+sys.path.append('../')
 from utils import *
 from utils.models import PromptHandler
 from utils.multiprocessing import *

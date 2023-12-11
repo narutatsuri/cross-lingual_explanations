@@ -1,0 +1,17 @@
+model:
+  checkpoint: bigscience/mt0-base
+  max_input_length: 256
+  max_output_length: 256
+  language: ja
+  arguments: 
+training:
+  train_data_dir: "data/training_lang=ja-data=split_ja.csv"
+  val_data_dir: "data/val_lang=ja-data=split_ja.csv"
+  train_batch_size: 4
+  val_batch_size: 8
+  epochs: 15
+  save_checkpoint_dir: /local/data/wl2787/saved_models/
+  save_strategy: "no"
+  save_steps: 2000
+testing:
+  num_beams: 8

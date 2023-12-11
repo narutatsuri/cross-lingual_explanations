@@ -1,0 +1,4 @@
+{
+    "model": "gpt-3.5-turbo-1106",
+    "instruction": "Choose the emotion expressed by the TEXT from CHOICES. [CHOICES]: fear, joy, surprise, anticipation, anger, disgust, trust [TEXT]: INSERT_TEXT [OUTPUT]: "
+}

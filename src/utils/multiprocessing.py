@@ -85,3 +85,64 @@ def generate_data_worker_task_func(prompter, emotion, example_by_emotion, count,
         bar.close()
     
     return output_data
+
+def translate_generated_data_worker_task_func(prompter, data, process_id, save_dir, lock):
+    with lock:
+        bar = tqdm(desc=f"Process {process_id+1}", total=len(data), position=process_id+1, leave=False)
+    output_data = []
+
+    for example in data:
+        with lock:
+            bar.update(1)
+
+        new_example = dict(example)
+
+        text = prompter.translate_generated_data(example["text"])
+        explanation = prompter.translate_generated_data(example["explanation"])
+
+        new_example["choice"] = plutchik_en_to_ja[example["choice"]]
+        new_example["text"] = text
+        new_example["explanation"] = explanation
+        new_example["generated_raw"] = text + explanation
+
+        output_data.append(new_example)
+
+        json.dump(output_data, 
+                  fp=open(save_dir.replace(".json", f"_process_id={process_id}.json"), "w"), 
+                  indent=4, 
+                  default=set_default)
+
+    with lock:
+        bar.close()
+    
+    return output_data
+
+
+def label_emotion_worker_task_func(prompter, data, process_id, save_dir, lock):
+    with lock:
+        bar = tqdm(desc=f"Process {process_id+1}", total=len(data), position=process_id+1, leave=False)
+    output_data = []
+
+    for example in data:
+        with lock:
+            bar.update(1)
+
+        new_example = dict()
+
+        text = prompter.label_emotion(example["text"])
+
+        new_example["text"] = example["text"]
+        new_example["model_label"] = text
+        new_example["ground_truth"] = example["choice"]
+
+        output_data.append(new_example)
+
+        json.dump(output_data, 
+                  fp=open(save_dir.replace(".json", f"_process_id={process_id}.json"), "w"), 
+                  indent=4, 
+                  default=set_default)
+
+    with lock:
+        bar.close()
+    
+    return output_data

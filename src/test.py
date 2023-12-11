@@ -1,39 +1,44 @@
 import argparse
-import json
 import os
-os.environ["TRANSFORMERS_CACHE"] = "/local-scratch1/data/wl2787/huggingface_cache/"
-# os.environ["TRANSFORMERS_CACHE"] = "/mnt/swordfish-datastore/wl2787/huggingface_cache/"
-os.environ["CUDA_VISIBLE_DEVICES"]="0"
+# os.environ["TRANSFORMERS_CACHE"] = "/local-scratch1/data/wl2787/huggingface_cache/"
+os.environ["TRANSFORMERS_CACHE"] = "/local/data/wl2787/huggingface_cache/"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0,2,4,5"
+import pandas as pd
+from munch import Munch
 import torch
 from utils import *
-from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 from utils.backbones import BackboneModel
+from utils.evaluation import get_metrics
+from tqdm import tqdm
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--model_tokenizer", type=str, default="google/mt5-large")
-parser.add_argument("--model_checkpoint", type=str)
+parser.add_argument("--model_dir", type=str)
 parser.add_argument("--data_dir", type=str)
-args = vars(parser.parse_args())
+parser.add_argument("--save_dir", type=str, default="results/")
+cmd_args = vars(parser.parse_args())
 
-data = json.load(open(args["data_dir"], "r"))
-print("# LOADED DATA")
-
-# tokenizer = AutoTokenizer.from_pretrained(args["model_tokenizer"])
-# model = AutoModelForSeq2SeqLM.from_pretrained(args["model_checkpoint"], torch_dtype="auto", device_map="auto")
 device = torch.device("cuda")
-model = BackboneModel(args["model_tokenizer"], args["model_checkpoint"], device)
 
-print("# LOADED MODEL")
+args = Munch.fromYAML(open(os.path.join(cmd_args["model_dir"], "model_config.yaml"), "r"))
 
-for example in data:
-    text = example["text"]
-    emotion = example["choice"]
-    input_format = "[TEXT]: {} [SENTIMENT]: {}".format(text, emotion)
-    print("INPUT: ", input_format)
+model = BackboneModel(args, device)
+data = pd.read_csv(cmd_args["data_dir"])
 
-    output = model.infer(input_format)
-    # output = model.generate(tokenizer.encode(input_format, return_tensors="pt", max_length=512, padding='max_length', truncation=True).to(model.device))
-    # output = tokenizer.batch_decode(output, skip_special_tokens=True)[0]
-    print("OUTPUT: ", output)
-    input()
+df_scoring = pd.DataFrame()
+
+save_dir = os.path.join(cmd_args["save_dir"], args.model_name)
+if not os.path.exists(save_dir):
+    os.makedirs(save_dir)
+
+for index, example in tqdm(data.iterrows(), total=len(data)):
+    output = model.infer(example["input"])
+
+    scores = {}
+    scores["input"] = example["input"]
+    scores["output"] = output
+    scores["gold_output"] = example["output"]
+    scores.update(get_metrics(output, example["output"]))
+
+    df_scoring = pd.concat([df_scoring, pd.DataFrame(scores, index=[index])])
+    df_scoring.to_csv(os.path.join(save_dir, "results_all.csv"), index=False)
