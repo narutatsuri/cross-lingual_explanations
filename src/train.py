@@ -57,7 +57,9 @@ if cmd_args["shots"] != None:
     args.training.epochs = cmd_args["epochs"]
 
     train_data_dir = f"data/training_lang={cmd_args['target']}-data=split_{cmd_args['target']}-shots={cmd_args['shots']}.csv"
-    val_data_dir = f"data/val_lang={cmd_args['target']}-data=split_{cmd_args['target']}.csv"
+    val_data_dir = (
+        f"data/val_lang={cmd_args['target']}-data=split_{cmd_args['target']}.csv"
+    )
 
     model.update_parameters(args)
     model.train(train_data_dir, val_data_dir)

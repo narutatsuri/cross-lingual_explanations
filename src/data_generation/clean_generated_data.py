@@ -2,7 +2,8 @@ import json
 import os
 import argparse
 import sys
-sys.path.append('../')
+
+sys.path.append("../")
 from utils import *
 
 
@@ -17,7 +18,9 @@ full_data = json.load(open(cmd_args["data_dir"], "r"))
 new_examples = []
 for folder in os.listdir(cmd_args["generated_data_dir"]):
     if "process_id" in folder:
-        new_examples += json.load(open(os.path.join(cmd_args["generated_data_dir"], folder), "r"))
+        new_examples += json.load(
+            open(os.path.join(cmd_args["generated_data_dir"], folder), "r")
+        )
 
 cleaned_new_examples = clean_generated_data(new_examples)
 full_data += cleaned_new_examples

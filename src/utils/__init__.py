@@ -10,8 +10,9 @@ plutchik_en_to_ja = {
     "sadness": "悲しみ",
     "disgust": "嫌悪",
     "anger": "怒り",
-    "anticipation": "期待"
+    "anticipation": "期待",
 }
+
 
 ############################
 # General Helper Functions #
@@ -21,10 +22,10 @@ def set_default(obj):
         return list(obj)
     raise TypeError
 
+
 def partition(obj, num_partitions):
-    """
-    """
-    chunks = int(len(obj) // num_partitions )
+    """ """
+    chunks = int(len(obj) // num_partitions)
 
     chunk_size = 0
     chunk_list = []
@@ -40,8 +41,9 @@ def partition(obj, num_partitions):
 
     if len(buf) != 0:
         chunk_list.append(buf)
-    
+
     return chunk_list
+
 
 ####################################
 # Data Generation Helper Functions #
@@ -49,7 +51,7 @@ def partition(obj, num_partitions):
 def remove_brackets(data):
     bracket_items = []
     for index in range(len(data)):
-        brackets = re.findall('\[.*?\]', data[index]["text"])
+        brackets = re.findall("\[.*?\]", data[index]["text"])
         if len(brackets) != 0:
             bracket_items += brackets
     bracket_items = set(bracket_items)
@@ -59,8 +61,9 @@ def remove_brackets(data):
             if bracket_item in data[index]["text"]:
                 data[index]["text"] = data[index]["text"].replace(bracket_item, "")
         data[index]["text"] = data[index]["text"].strip()
-        
+
     return data
+
 
 def clean_generated_data(data):
     data = remove_brackets(data)
@@ -68,7 +71,7 @@ def clean_generated_data(data):
     for index in range(len(data)):
         example = dict(data[index])
         if "generated_raw" in example:
-            del example["generated_raw"]        
+            del example["generated_raw"]
         if "id" not in example:
             example["id"] = "generated"
         data[index] = example
@@ -80,14 +83,16 @@ def clean_generated_data(data):
 
     return data
 
+
 def get_emotion_counts(data):
     emotion_counts = {}
     for emotion in plutchik:
         emotion_counts[emotion] = 0
     for example in data:
         emotion_counts[example["choice"]] += 1
-    
+
     return emotion_counts
+
 
 def get_emotion_splits(data):
     example_by_emotion = {}
@@ -98,12 +103,14 @@ def get_emotion_splits(data):
 
     return example_by_emotion
 
+
 def get_duplicates(data):
     duplicates = []
     for i in range(len(data)):
-        for j in range(i+1, len(data)):
+        for j in range(i + 1, len(data)):
             if data[i] == data[j]:
-                duplicates.append((i,j))    
+                duplicates.append((i, j))
+
 
 def remove_duplicates(data):
     return [dict(t) for t in {tuple(d.items()) for d in data}]

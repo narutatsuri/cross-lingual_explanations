@@ -20,6 +20,7 @@ cmd_args = vars(parser.parse_args())
 
 import json
 import random
+
 os.environ["HF_CACHE"] = cmd_args["huggingface_cache"]
 os.environ["CUDA_VISIBLE_DEVICES"] = cmd_args["device"]
 import pandas as pd
@@ -37,12 +38,16 @@ device = torch.device("cuda")
 
 # Load OpenAI API Keys
 keys = json.load(open(cmd_args["api_keys_file"], "r"))
-assert all([key.startswith("sk-") for key in keys]), "[ERROR]: Set up keys in `openai_keys.json`."
+assert all(
+    [key.startswith("sk-") for key in keys]
+), "[ERROR]: Set up keys in `openai_keys.json`."
 
 prompt_template = json.load(open(cmd_args["prompt_template"], "r"))
 prompt_evaluator = PromptEvaluator(api_key=keys, prompt_template=prompt_template)
 
-args = Munch.fromYAML(open(os.path.join(cmd_args["model_dir"], "model_config.yaml"), "r"))
+args = Munch.fromYAML(
+    open(os.path.join(cmd_args["model_dir"], "model_config.yaml"), "r")
+)
 model = BackboneModel(args, device)
 
 data = pd.read_csv(cmd_args["data_dir"])
@@ -62,11 +67,19 @@ for index, example in tqdm(data.iterrows(), total=len(data)):
     scores["gold_output"] = example["output"]
 
     if cmd_args["score_metric"] == "comparison":
-        scores["comparison"] = prompt_evaluator.get_prompt_comparison(example["output"], output)
+        scores["comparison"] = prompt_evaluator.get_prompt_comparison(
+            example["output"], output
+        )
     elif cmd_args["score_metric"] == "fluency":
-        scores["fluency"] = prompt_evaluator.get_prompt_fluency(example["output"], output)
+        scores["fluency"] = prompt_evaluator.get_prompt_fluency(
+            example["output"], output
+        )
     elif cmd_args["score_metric"] == "accuracy":
-        scores["accuracy"] = prompt_evaluator.get_prompt_accuracy(example["output"], output, example["input"])
+        scores["accuracy"] = prompt_evaluator.get_prompt_accuracy(
+            example["output"], output, example["input"]
+        )
 
     df_scoring = pd.concat([df_scoring, pd.DataFrame(scores, index=[index])])
-    df_scoring.to_csv(os.path.join(save_dir, f"{cmd_args['score_metric']}_results.csv"), index=False)
+    df_scoring.to_csv(
+        os.path.join(save_dir, f"{cmd_args['score_metric']}_results.csv"), index=False
+    )

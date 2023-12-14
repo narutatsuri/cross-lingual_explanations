@@ -1,6 +1,7 @@
 import argparse, random, json, os
 import sys
-sys.path.append('../')
+
+sys.path.append("../")
 from utils import *
 from utils.models import PromptHandler
 from utils.multiprocessing import *
@@ -22,18 +23,20 @@ random.seed(args["random_seed"])
 
 # Load OpenAI API Keys
 keys = json.load(open(args["api_keys_file"], "r"))
-assert all([key.startswith("sk-") for key in keys]), "[ERROR]: Set up keys in `openai_keys.json`."
+assert all(
+    [key.startswith("sk-") for key in keys]
+), "[ERROR]: Set up keys in `openai_keys.json`."
 
 prompt_template = json.load(open(args["prompt_template"], "r"))
 prompter = PromptHandler(api_key=keys, prompt_template=prompt_template)
 
-summary_data = json.load( open(args["data_dir"], "r") )
+summary_data = json.load(open(args["data_dir"], "r"))
 
 assert "_with_summaries" in args["data_dir"]
 explanation_dir = args["data_dir"].replace(".json", "_with_explanations.json")
 
 if os.path.exists(explanation_dir):
-    explanation_data = json.load( open(explanation_dir, "r") )
+    explanation_data = json.load(open(explanation_dir, "r"))
     existing_keys = [i["id"] for i in explanation_data]
 else:
     explanation_data = []
@@ -53,11 +56,18 @@ lock = multiprocessing.Manager().Lock()
 pool = multiprocessing.Pool(processes=args["num_processes"])
 
 for process_id in range(len(extracted_files)):
-    worker_results.append(pool.apply_async(explain_worker_task_func, args = (prompter, 
-                                                                                extracted_files[process_id], 
-                                                                                process_id, 
-                                                                                explanation_dir, 
-                                                                                lock)))
+    worker_results.append(
+        pool.apply_async(
+            explain_worker_task_func,
+            args=(
+                prompter,
+                extracted_files[process_id],
+                process_id,
+                explanation_dir,
+                lock,
+            ),
+        )
+    )
 
 pool.close()
 pool.join()
@@ -68,4 +78,6 @@ for i in worker_results:
 
 explanation_data += explained_examples
 
-json.dump(explanation_data, fp=open(explanation_dir, "w"), indent=4, default=set_default)
+json.dump(
+    explanation_data, fp=open(explanation_dir, "w"), indent=4, default=set_default
+)

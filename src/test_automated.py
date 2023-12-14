@@ -25,7 +25,9 @@ from tqdm import tqdm
 
 device = torch.device("cuda")
 
-args = Munch.fromYAML(open(os.path.join(cmd_args["model_dir"], "model_config.yaml"), "r"))
+args = Munch.fromYAML(
+    open(os.path.join(cmd_args["model_dir"], "model_config.yaml"), "r")
+)
 
 model = BackboneModel(args, device)
 data = pd.read_csv(cmd_args["data_dir"])

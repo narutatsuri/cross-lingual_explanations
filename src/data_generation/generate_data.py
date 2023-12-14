@@ -1,6 +1,7 @@
 import argparse, random, json
 import sys
-sys.path.append('../')
+
+sys.path.append("../")
 from utils import *
 from utils.models import PromptHandler
 from utils.multiprocessing import *
@@ -25,14 +26,16 @@ random.seed(cmd_args["random_seed"])
 
 # Load OpenAI API Keys
 keys = json.load(open(cmd_args["api_keys_file"], "r"))
-assert all([key.startswith("sk-") for key in keys]), "[ERROR]: Set up keys in `openai_keys.json`."
+assert all(
+    [key.startswith("sk-") for key in keys]
+), "[ERROR]: Set up keys in `openai_keys.json`."
 
 # Create prompter
 prompt_template = json.load(open(cmd_args["prompt_template"], "r"))
 prompter = PromptHandler(api_key=keys, prompt_template=prompt_template)
 
 # Load data
-formatted_data = json.load( open(cmd_args["data_dir"], "r") )
+formatted_data = json.load(open(cmd_args["data_dir"], "r"))
 
 # Get counts for number of instances that need generating for each emotion
 emotion_counts = get_emotion_counts(formatted_data)
@@ -49,17 +52,24 @@ for emotion in emotion_counts:
     lock = multiprocessing.Manager().Lock()
     pool = multiprocessing.Pool(processes=cmd_args["num_processes"])
 
-    count = emotion_counts[emotion]//cmd_args["num_processes"] + 1
+    count = emotion_counts[emotion] // cmd_args["num_processes"] + 1
     for process_id in range(cmd_args["num_processes"]):
-        worker_results.append(pool.apply_async(generate_data_worker_task_func, args = (prompter, 
-                                                                                       emotion,
-                                                                                       example_by_emotion,
-                                                                                       count,
-                                                                                       process_id, 
-                                                                                       cmd_args["data_dir"], 
-                                                                                       lock, 
-                                                                                       cmd_args["num_examples"],
-                                                                                       cmd_args["example_retrieval"])))
+        worker_results.append(
+            pool.apply_async(
+                generate_data_worker_task_func,
+                args=(
+                    prompter,
+                    emotion,
+                    example_by_emotion,
+                    count,
+                    process_id,
+                    cmd_args["data_dir"],
+                    lock,
+                    cmd_args["num_examples"],
+                    cmd_args["example_retrieval"],
+                ),
+            )
+        )
 
     pool.close()
     pool.join()
@@ -67,4 +77,9 @@ for emotion in emotion_counts:
     for i in worker_results:
         formatted_data += i.get()
 
-    json.dump(formatted_data, fp=open(cmd_args["data_dir"], "w"), indent=4, default=set_default)
+    json.dump(
+        formatted_data,
+        fp=open(cmd_args["data_dir"], "w"),
+        indent=4,
+        default=set_default,
+    )

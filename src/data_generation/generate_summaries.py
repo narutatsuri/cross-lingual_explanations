@@ -1,6 +1,7 @@
 import argparse, random, json, os
 import sys
-sys.path.append('../')
+
+sys.path.append("../")
 from utils import *
 from utils.models import PromptHandler
 from utils.multiprocessing import *
@@ -23,17 +24,19 @@ random.seed(args["random_seed"])
 
 # Load OpenAI API Keys
 keys = json.load(open(args["api_keys_file"], "r"))
-assert all([key.startswith("sk-") for key in keys]), "[ERROR]: Set up keys in `openai_keys.json`."
+assert all(
+    [key.startswith("sk-") for key in keys]
+), "[ERROR]: Set up keys in `openai_keys.json`."
 
 prompt_template = json.load(open(args["prompt_template"], "r"))
 prompter = PromptHandler(api_key=keys, prompt_template=prompt_template)
 
-sentiment_data = json.load( open(args["data_dir"], "r") )
+sentiment_data = json.load(open(args["data_dir"], "r"))
 
 summary_dir = args["data_dir"].replace(".json", "_with_summaries.json")
 
 if os.path.exists(summary_dir):
-    summary_data = json.load( open(summary_dir, "r") )
+    summary_data = json.load(open(summary_dir, "r"))
     existing_keys = [i["id"] for i in summary_data]
 else:
     summary_data = []
@@ -44,11 +47,18 @@ for id in sentiment_data:
     if id not in existing_keys:
         example = dict()
         text = sentiment_data[id]["Reddit Post"]
-        choices = [i["Emotion"] for i in list(itertools.chain.from_iterable(list((sentiment_data[id]["Annotations"]).values())))]
+        choices = [
+            i["Emotion"]
+            for i in list(
+                itertools.chain.from_iterable(
+                    list((sentiment_data[id]["Annotations"]).values())
+                )
+            )
+        ]
         example["text"] = text
         example["choices"] = choices
         example["id"] = id
-    
+
         extracted_files.append(example)
 
 
@@ -59,11 +69,12 @@ lock = multiprocessing.Manager().Lock()
 pool = multiprocessing.Pool(processes=args["num_processes"])
 
 for process_id in range(len(extracted_files)):
-    worker_results.append(pool.apply_async(summarize_worker_task_func, args = (prompter, 
-                                                                                extracted_files[process_id], 
-                                                                                process_id, 
-                                                                                summary_dir, 
-                                                                                lock)))
+    worker_results.append(
+        pool.apply_async(
+            summarize_worker_task_func,
+            args=(prompter, extracted_files[process_id], process_id, summary_dir, lock),
+        )
+    )
 
 pool.close()
 pool.join()
