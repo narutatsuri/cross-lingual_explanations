@@ -13,9 +13,8 @@
      - ```data_augmentation```: Contains templates for data generation.
      - ```openai_keys.json```: File to store OpenAI key. 
  - ```results```: Scoring results for all models.
- - ```scripts```: Bash scripts for automating running model training sequentially.
+ - ```scripts```: Bash scripts for automating running model training sequentially. (Most are removed for clarity)
  - ```src```: Main directory for code.
      - ```analysis```: Code for investigating whether emotions are language-agnostic.
      - ```data_generation```: Code for data augmentation.
      - ```utils```: Helper folder containing various functions, classes, and methods. 
-     
