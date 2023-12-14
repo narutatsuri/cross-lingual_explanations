@@ -2,7 +2,7 @@ import argparse
 import os
 # os.environ["TRANSFORMERS_CACHE"] = "/local-scratch1/data/wl2787/huggingface_cache/"
 os.environ["TRANSFORMERS_CACHE"] = "/local/data/wl2787/huggingface_cache/"
-os.environ["CUDA_VISIBLE_DEVICES"] = "0,2,4,5"
+os.environ["CUDA_VISIBLE_DEVICES"] = "5,7"
 import pandas as pd
 from munch import Munch
 import torch

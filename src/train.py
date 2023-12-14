@@ -3,7 +3,7 @@ import os
 # os.environ["TRANSFORMERS_CACHE"] = "/local-scratch1/data/wl2787/huggingface_cache/" # communication
 # os.environ["TRANSFORMERS_CACHE"] = "/mnt/swordfish-datastore/wl2787/huggingface_cache/" # branzino
 os.environ["TRANSFORMERS_CACHE"] = "/local/data/wl2787/huggingface_cache/" # coffee
-os.environ["CUDA_VISIBLE_DEVICES"] = "4,6,7"
+os.environ["CUDA_VISIBLE_DEVICES"] = "4,5,6"
 import yaml
 from munch import Munch
 from utils.backbones import BackboneModel

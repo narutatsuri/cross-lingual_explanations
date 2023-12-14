@@ -51,7 +51,10 @@ class PromptEvaluator:
         """
         prompt = ""
         prompt += self.prompt_template["instruction"] + "\n"
-        prompt += f"[RATIONALE 1]: {prediction[prediction.index('[RATIONALE]: ') + len('[RATIONALE]: '):]}\n[RATIONALE 2]: {reference[reference.index('[RATIONALE]: ') + len('[RATIONALE]: '):]}"
+        try:
+            prompt += f"[RATIONALE 1]: {prediction[prediction.index('[RATIONALE]: ') + len('[RATIONALE]: '):]}\n[RATIONALE 2]: {reference[reference.index('[RATIONALE]: ') + len('[RATIONALE]: '):]}"
+        except ValueError:
+            prompt += f"[RATIONALE 1]: {prediction}\n[RATIONALE 2]: {reference[reference.index('[RATIONALE]: ') + len('[RATIONALE]: '):]}"
 
         output = openai.ChatCompletion.create(model=self.model,messages=[{"role": "system", "content": ""},
                                                                             {"role": "user", "content": prompt},],
@@ -62,13 +65,16 @@ class PromptEvaluator:
 
         return output    
     
-    def get_prompt_accuracy(self, reference, prediction):
+    def get_prompt_accuracy(self, reference, prediction, text):
         """
         """
         prompt = ""
         prompt += self.prompt_template["instruction"] + "\n"
-        prompt += f"[RATIONALE 1]: {prediction[prediction.index('[RATIONALE]: ') + len('[RATIONALE]: '):]}\n[RATIONALE 2]: {reference[reference.index('[RATIONALE]: ') + len('[RATIONALE]: '):]}"
-
+        prompt += text + "\n"
+        try:
+            prompt += f"[RATIONALE 1]: {prediction[prediction.index('[RATIONALE]: ') + len('[RATIONALE]: '):]}\n[RATIONALE 2]: {reference[reference.index('[RATIONALE]: ') + len('[RATIONALE]: '):]}"
+        except ValueError:
+            prompt += f"[RATIONALE 1]: {prediction}\n[RATIONALE 2]: {reference[reference.index('[RATIONALE]: ') + len('[RATIONALE]: '):]}"
         output = openai.ChatCompletion.create(model=self.model,messages=[{"role": "system", "content": ""},
                                                                             {"role": "user", "content": prompt},],
                                                                             temperature=0,
