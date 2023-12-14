@@ -33,17 +33,6 @@ prompter = PromptHandler(api_key=keys, prompt_template=prompt_template)
 # Load data
 full_data = json.load(open(cmd_args["data_dir"], "r"))
 
-# # Split data into parts (or load split data)
-# if not os.path.exists(os.path.join(cmd_args["data_dir"], cmd_args["data_dir"].replace("lang=en", "lang=ja"))):
-#     print("Generating English/Japanese split...")
-
-#     json.dump(english_split, open(os.path.join(cmd_args["data_dir"], "lang=en-data=split_en.json"), "w"), indent=4, default=set_default)
-#     json.dump(english_split, open(os.path.join(cmd_args["data_dir"], "lang=en-data=split_ja.json"), "w"), indent=4, default=set_default)
-# else:
-#     print("Loading existing split...")
-#     english_split = json.load(open(os.path.join(cmd_args["data_dir"], "lang=en-data=split_en.json"), "r"))
-#     japanese_split = json.load(open(os.path.join(cmd_args["data_dir"], "lang=en-data=split_ja.json"), "r"))
-
 # Get translated data and remove them from process list
 save_dir =  cmd_args["data_dir"].replace("lang=en", "lang=ja")
 

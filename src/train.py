@@ -1,13 +1,5 @@
 import argparse
 import os
-# os.environ["TRANSFORMERS_CACHE"] = "/local-scratch1/data/wl2787/huggingface_cache/" # communication
-# os.environ["TRANSFORMERS_CACHE"] = "/mnt/swordfish-datastore/wl2787/huggingface_cache/" # branzino
-os.environ["TRANSFORMERS_CACHE"] = "/local/data/wl2787/huggingface_cache/" # coffee
-os.environ["CUDA_VISIBLE_DEVICES"] = "4,5,6"
-import yaml
-from munch import Munch
-from utils.backbones import BackboneModel
-
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--config_file", type=str, default="conf/backbone.yaml")
@@ -17,7 +9,18 @@ parser.add_argument("--source", type=str, default="ja")
 parser.add_argument("--target", type=str, default="en")
 parser.add_argument("--save_strategy", type=str, default="no")
 parser.add_argument("--epochs", type=int, default=3)
+
+parser.add_argument("--device", type=str)
+parser.add_argument("--huggingface_cache", type=str)
+
 cmd_args = vars(parser.parse_args())
+
+os.environ["HF_CACHE"] = cmd_args["huggingface_cache"]
+os.environ["CUDA_VISIBLE_DEVICES"] = cmd_args["device"]
+
+import yaml
+from munch import Munch
+from utils.backbones import BackboneModel
 
 
 # Load YAML config file
@@ -40,7 +43,6 @@ val_data_dir = args.training.val_data_dir
 
 model = BackboneModel(args)
 model.train(train_data_dir, val_data_dir)
-
 
 if cmd_args["shots"] != None:
     assert args.model.language == cmd_args["source"]

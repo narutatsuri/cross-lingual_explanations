@@ -1,8 +1,19 @@
 import argparse
 import os
-# os.environ["TRANSFORMERS_CACHE"] = "/local-scratch1/data/wl2787/huggingface_cache/"
-os.environ["TRANSFORMERS_CACHE"] = "/local/data/wl2787/huggingface_cache/"
-os.environ["CUDA_VISIBLE_DEVICES"] = "5,7"
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--model_dir", type=str)
+parser.add_argument("--data_dir", type=str)
+parser.add_argument("--save_dir", type=str, default="results/")
+
+parser.add_argument("--device", type=str)
+parser.add_argument("--huggingface_cache", type=str)
+
+cmd_args = vars(parser.parse_args())
+
+os.environ["HF_CACHE"] = cmd_args["huggingface_cache"]
+os.environ["CUDA_VISIBLE_DEVICES"] = cmd_args["device"]
+
 import pandas as pd
 from munch import Munch
 import torch
@@ -11,12 +22,6 @@ from utils.backbones import BackboneModel
 from utils.evaluation import get_metrics
 from tqdm import tqdm
 
-
-parser = argparse.ArgumentParser()
-parser.add_argument("--model_dir", type=str)
-parser.add_argument("--data_dir", type=str)
-parser.add_argument("--save_dir", type=str, default="results/")
-cmd_args = vars(parser.parse_args())
 
 device = torch.device("cuda")
 

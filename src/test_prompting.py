@@ -1,4 +1,5 @@
 import argparse
+import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--model_dir", type=str)
@@ -13,14 +14,12 @@ parser.add_argument("--shuffle_keys", action="store_true")
 parser.add_argument("--random_seed", type=int, default=42)
 
 parser.add_argument("--device", type=str)
-parser.add_argument("--huggingface_cache", type=str, default="/local/data/wl2787/huggingface_cache/")
+parser.add_argument("--huggingface_cache", type=str)
 
 cmd_args = vars(parser.parse_args())
 
-import os
 import json
 import random
-# os.environ["HF_CACHE"] = "/local-scratch1/data/wl2787/huggingface_cache/"
 os.environ["HF_CACHE"] = cmd_args["huggingface_cache"]
 os.environ["CUDA_VISIBLE_DEVICES"] = cmd_args["device"]
 import pandas as pd
